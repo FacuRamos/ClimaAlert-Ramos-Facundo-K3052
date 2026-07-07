@@ -15,7 +15,7 @@ public class Notificador {
     this.adapter = adapter;
   }
 
-  public boolean notificar(List<MedioDeContacto> medioDeContactos) {
+  public boolean notificar(List<MedioDeContacto> medioDeContactos, Double temperatura, Double humedad) {
     boolean success = true;
     for (MedioDeContacto medio : medioDeContactos) {
       if (medio.getMail() != null && !medio.getMail().isEmpty()) {
@@ -23,7 +23,8 @@ public class Notificador {
           adapter.enviar(
               medio.getMail(), 
               "Alerta de clima", 
-              "Atención: Se han detectado condiciones climáticas extremas en tu zona."
+              "Atención: Se han detectado condiciones climáticas extremas en tu zona. Temperatura actual: " 
+                  + temperatura + "°C, Humedad: " + humedad + "%."
           );
         } catch (Exception e) {
           System.err.println("Error al enviar email a " + medio.getMail() + ": " + e.getMessage());

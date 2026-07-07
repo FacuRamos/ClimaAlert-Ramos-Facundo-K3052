@@ -87,7 +87,11 @@ public class ControlDeClimaServiceImpl implements ControlClimaService{
             .collect(Collectors.toList());
 
         if (!mediosFiltrados.isEmpty()) {
-          boolean success = notificador.notificar(mediosFiltrados);
+          boolean success = notificador.notificar(
+              mediosFiltrados,
+              datosClima.getDatosActualesClima().getTemperatura(),
+              datosClima.getDatosActualesClima().getHumedad()
+          );
           if (success) {
             mediosFiltrados.forEach(medio -> {
               alertasEnviadas.add(generarClaveAlerta(medio.getMail()));
