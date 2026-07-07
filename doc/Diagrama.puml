@@ -1,0 +1,31 @@
+@startuml
+class Entidad{
+-Long id
+-List<MedioDeContacto> medioDeContactos
+
+}
+
+class MedioDeContacto{
+-String mail
+}
+
+class Notificador{
++notificar(List<Entidad> entidades)
+}
+
+interface AdapterNotificadorMail{
++notificar(List<Entidad> entidades)
+}
+
+
+class MailSenderAdapter implements AdapterNotificadorMail{
++notificar(List<Entidad> entidades)
+}
+
+Entidad-->"*"MedioDeContacto
+
+Notificador-->"*"Entidad
+Notificador..>AdapterNotificadorMail
+
+
+@enduml

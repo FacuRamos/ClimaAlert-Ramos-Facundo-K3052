@@ -1,0 +1,2 @@
+rest-climate:
+  base-url:https://api.weatherapi.com/v1/current.json?key=904b65e7c37643ce8d8152855260402&q=Buenos_Aires&aqi=no

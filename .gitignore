@@ -29,3 +29,8 @@ target/**
 # IJ files
 *.iml
 .idea/**
+
+# Environment variables
+.env
+
+
